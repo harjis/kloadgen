@@ -1,13 +1,20 @@
+/*
+ *  This Source Code Form is subject to the terms of the Mozilla Public
+ *  * License, v. 2.0. If a copy of the MPL was not distributed with this
+ *  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package net.coru.kloadgen.config.keyfileserialized;
 
 import static net.coru.kloadgen.util.PropsKeysHelper.KEY_SCHEMA_PROPERTIES;
 import static net.coru.kloadgen.util.PropsKeysHelper.KEY_SUBJECT_NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.confluent.kafka.serializers.subject.TopicNameStrategy;
 import java.io.File;
 import java.util.Collections;
 import java.util.Locale;
+
+import io.confluent.kafka.serializers.subject.TopicNameStrategy;
 import net.coru.kloadgen.serializer.AvroSerializer;
 import org.apache.jmeter.threads.JMeterContext;
 import org.apache.jmeter.threads.JMeterContextService;
@@ -29,9 +36,11 @@ class KeyFileSerializedConfigElementTest {
   }
 
   @Test
-  public void iterationStart( ) {
+  public void iterationStart() {
 
-    String schemaDefinition = "{\"type\": \"record\", \"name\": \"Key\", \"namespace\": \"my.topic\", \"fields\": [  {   \"name\": \"myKey\",   \"type\": \"long\"  } ], \"connect.name\": \"my.topic.Key\"}";
+    String schemaDefinition
+        = "{\"type\": \"record\", \"name\": \"Key\", \"namespace\": \"my.topic\", \"fields\": [  {   \"name\": \"myKey\",   \"type\": \"long\"  } ], \"connect.name\": \"my.topic" +
+          ".Key\"}";
 
     KeyFileSerializedConfigElement
         keyFileSerializedConfigElement =

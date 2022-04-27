@@ -1,3 +1,9 @@
+/*
+ *  This Source Code Form is subject to the terms of the Mozilla Public
+ *  * License, v. 2.0. If a copy of the MPL was not distributed with this
+ *  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package net.coru.kloadgen.property.editor;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -5,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.util.Locale;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -14,15 +21,9 @@ import org.apache.jmeter.threads.JMeterContextService;
 import org.apache.jmeter.threads.JMeterVariables;
 import org.apache.jmeter.util.JMeterUtils;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import ru.lanwen.wiremock.ext.WiremockResolver;
-import ru.lanwen.wiremock.ext.WiremockUriResolver;
 
-@ExtendWith({
-    WiremockResolver.class,
-    WiremockUriResolver.class
-})
 class SchemaRegistryConfigPropertyEditorTest {
 
   private SchemaRegistryConfigPropertyEditor propertyEditor;
@@ -38,6 +39,7 @@ class SchemaRegistryConfigPropertyEditorTest {
   }
 
   @Test
+  @DisplayName("Should Schema Registry Property Editor Initialize successfully")
   void testPropertyEditorInit() {
     assertThat(propertyEditor.getCustomEditor()).isInstanceOf(JPanel.class);
 
@@ -48,6 +50,7 @@ class SchemaRegistryConfigPropertyEditorTest {
   }
 
   @Test
+  @DisplayName("Should Schema Registry Property Editor get the right value")
   void testPropertyEditorSetValue() {
     propertyEditor.setValue("http://localhost:8081");
     assertThat(propertyEditor.getValue()).isEqualTo("http://localhost:8081");
